@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCvsg_L7Ziez3LwWkioCNsvJhM0eEdueek",
+            authDomain: "event-planner-5fcee.firebaseapp.com",
+            databaseURL: "https://event-planner-5fcee.firebaseio.com",
+            projectId: "event-planner-5fcee",
+            storageBucket: "event-planner-5fcee.appspot.com",
+            messagingSenderId: "63932627643"
+        };
+        firebase.initializeApp(config);
+    </script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/time.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet/create.css">
+    <link rel="shortcut icon" href="images/tab1.png">
+    <title>Create Event</title>
+</head>
+<body onload="startTime(),setDate(),setUserName()">
+
+<!--Navbar starts-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="javascript:void(0)">
+      <img src="images/logo1.png" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:void(0)" onclick="window.location='myevent.html'">My Events<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="javascript:void(0)" onclick="window.location='mainpage.html'">All Events <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="javascript:void(0)" onclick="window.location='create.html'">Create Event <span class="sr-only">(current)</span></a>
+          </li>
+      </ul>
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:void(0)" id="username">Hello <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="javascript:void(0)" id="date">Date <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="javascript:void(0)" id="time">Time <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+                <button type="button" class="btn btn-light" id="logout">Log out</button><span class="sr-only">(current)</span>
+          </li>
+      </ul>
+      
+    </div>
+  </nav>
+<!--Navbar ends-->
+
+<!--Grids start-->
+<div class="row">
+    <div class="col">
+    </div>
+    <div class="col">
+      <h1 style="text-align:center">Create New Event</h1>
+              <div class="form-group">
+                <label for="name" class="col-form-label">Name of Event</label>
+                <input type=text class="form-control" id="name" placeholder="Enter Event Name">
+              </div>
+
+              <div class="form-group">
+                  <label for="location" class="col-form-label">Location</label>
+                  <input type="text" class="form-control" id="location" placeholder="Enter Event Location">
+                </div>
+
+                <div class="form-group">
+                    <label for="instructions">Instructions</label>
+                    <textarea class="form-control" id="instructions" rows="3"></textarea>
+                  </div>
+
+                <div class="form-group">
+                    <label class="col-form-label">Date</label>
+                    <div class="form-row">
+                      <!--Day-->
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" id="day" placeholder="Day (0 to 31)">
+                          </div>
+                          <!--Month-->
+                          <div class="form-group col-md-4">
+                              <input type="text" class="form-control" id="month" placeholder="Month (1 to 12)">
+                            </div>
+                            <!--Year-->
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="year" placeholder="Year (2017)etc">
+                              </div>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Time</label>
+                        <div class="form-row">
+                          <!--Hours-->
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="hours" placeholder="Hours (1 to 12)">
+                              </div>
+                              <!--Minutes-->
+                              <div class="form-group col-md-4">
+                                  <input type="text" class="form-control" id="minutes" placeholder="Minutes 00to59">
+                                </div>
+                                <!--Standard-->
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" id="standard" placeholder="am or pm">
+                                  </div>
+                        </div>
+                    
+                   
+                    
+                   
+                    
+                    
+                  </div>
+            <button class="btn btn-success" style="float:right" onclick="newEvent()">Create Event</button>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+<!--Grids end-->
+
+<!--Scripts-->
+<script src="js/create.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+body{
+    background-image: url('../images/back.jpg');
+}
+.fields{
+    background-color: rgba(0,255,255,0.5);
+    color: #ffffff;
+}
+.fields::-webkit-input-placeholder{
+    color: #000000;
+}
